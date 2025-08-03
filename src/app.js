@@ -6,23 +6,29 @@ const app=express();
 // routing with regex is only working before 5 version
 
 // c is optional here abcx, abx works here
-app.get("/abc?x",(req,res)=>{
-    res.send("It's ? checking");
-})
-// you can add as many m as you want, abmc, abmmmmc, abmmmmmmmmmc
-app.get("/abm+c",(req,res)=>{
-    res.send("It's + checking");
-})
-// you keep whatever you want in * place, abcmdjgjdjc, abcc, abcmjdc
-app.get("/abc*c",(req,res)=>{
-    res.send("It's * checking");
-})
-// we can ignore both wz ac, awzc
-app.get("/a(wz)?c",(req,res)=>{
-    res.send("It's () checking");
+// app.get("/abc?x",(req,res)=>{
+//     res.send("It's ? checking");
+// })
+// // you can add as many m as you want, abmc, abmmmmc, abmmmmmmmmmc
+// app.get("/abm+c",(req,res)=>{
+//     res.send("It's + checking");
+// })
+// // you keep whatever you want in * place, abcmdjgjdjc, abcc, abcmjdc
+// app.get("/abc*c",(req,res)=>{
+//     res.send("It's * checking");
+// })
+// // we can ignore both wz ac, awzc
+// app.get("/a(wz)?c",(req,res)=>{
+//     res.send("It's () checking");
+// })
+
+//below 2 works even after express 5 version also
+
+app.get(/a/,(req,res)=>{        // any route includes a it will work, a, aaaa, abhfu, helloah
+    res.send("It's regex checking");
 })
 
-app.get(/a/,(req,res)=>{
+app.get(/.*fly$/,(req,res)=>{            //start with anything ending fly it will work, butterfly, fly, dragonfly
     res.send("It's regex checking");
 })
 
