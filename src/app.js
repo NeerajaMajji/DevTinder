@@ -32,6 +32,16 @@ app.get(/.*fly$/,(req,res)=>{            //start with anything ending fly it wil
     res.send("It's regex checking");
 })
 
+app.get("/test",(req,res,next)=>{
+    console.log("1st event handler")
+    //  res.send("1st route handler");
+     next();
+},
+(req,res)=>{
+    console.log("2nd handler")
+res.send("2nd route handler")
+})
+
 
 app.post("/hello",(req,res)=>{
     res.send("It's Post API")
