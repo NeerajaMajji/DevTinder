@@ -1,6 +1,7 @@
 console.log("Hello App.js")
 
 const express= require("express");
+const {AdminAuth}=require("./middlewares/auth");
 const app=express();
 
 // routing with regex is only working before 5 version
@@ -53,15 +54,7 @@ const app=express();
 //     res.send("Hello from the server!");
 // });
 
-app.use('/admin',(req,res,next)=>{
-    let authToken='xyz'
-    if(authToken==='xyz'){
-        next()
-    }
-    else{
-        res.status(401).send("Unauthorized user");
-    }
-    })
+app.use('/admin',AdminAuth)
 
 app.get("/admin/getAllData",(req,res)=>{
     res.send("Successfully sent all the data");
