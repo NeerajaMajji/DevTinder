@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/NeerajaMajji/DevTinder#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^4.19.2"
   }
 }
